@@ -1,0 +1,91 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 1.125rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #252525;
+}
+
+.cards {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.card {
+  position: relative;
+  height: 300px;
+  width: 200px;
+}
+
+.bg-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+
+.bg-wrapper:before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  background: radial-gradient(ellipse at center, rgba(12, 13, 19, 0.5) 30%, rgba(12, 13, 19, 0.9) 90%);
+  transition: all 0.5s;
+}
+
+.card:hover .bg-wrapper {
+  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.card:hover .bg-wrapper:before {
+  opacity: 1;
+}
+
+.image-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-active {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translate3d(0%, 20%, 100px);
+  transform-origin: bottom;
+  transition: all 0.5s;
+}
+
+.card:hover .image-active {
+  opacity: 1;
+  transform: translate3d(0%, -10%, 100px);
+}
+
+.image-logo {
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+  max-width: 100%;
+  padding: 0 20px;
+  transition: all 0.5s;
+}
+
+.card:hover .image-logo {
+  transform: translate3d(0%, -30px, 100px);
+  padding: 0 25px;
+}
